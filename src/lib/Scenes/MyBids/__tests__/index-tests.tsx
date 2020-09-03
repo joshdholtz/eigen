@@ -8,10 +8,7 @@ import { PlaceholderText } from "lib/utils/placeholders"
 
 import { renderWithWrappers } from "lib/tests/renderWithWrappers"
 import { me } from "../__fixtures__/MyBidsQuery"
-import {
-  ActiveLotFragmentContainer as ActiveLot,
-  RecentlyClosedLotFragmentContainer as RecentlyClosedLot,
-} from "../Components"
+import { ActiveLotFragmentContainer as ActiveLot, ClosedLotFragmentContainer as ClosedLot } from "../Components"
 import { MyBidsQueryRenderer } from "../index"
 
 jest.mock("lib/relay/createEnvironment", () => ({
@@ -60,7 +57,7 @@ describe(MyBidsQueryRenderer, () => {
     expect(extractText(upcomingLots[2])).toContain("2 bids")
     expect(extractText(upcomingLots[2])).toContain("Highest bid")
 
-    const recentlyClosedLot = tree.root.findAllByType(RecentlyClosedLot)
+    const recentlyClosedLot = tree.root.findAllByType(ClosedLot)
 
     expect(extractText(recentlyClosedLot[0])).toContain("Maskull Lasserre")
     expect(extractText(recentlyClosedLot[0])).toContain("Didn't win")
